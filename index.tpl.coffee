@@ -38,16 +38,16 @@ listOfTags = (tags, selectedTags) ->
 listOfAvailableTags = (tags, selectedTags) ->
 	listOfTags (tags
 		.filter (tag) -> not (tag.title in selectedTags)
-		.map (tag) -> Object.assign {}, tag, link: linkWithTag selectedTags, tag.title
+		.map (tag) -> Object.assign {}, tag, link: linkWithTag selectedTags, tag.id
 	), selectedTags
 
 listOfSelectedTags = (tags, selectedTags) ->
 	'<p>No tags selected.</p>' if selectedTags.length is 0
 	listOfTags (tags
-		.filter (tag) -> tag.title in selectedTags
+		.filter (tag) -> tag.id in selectedTags
 		.map (tag) -> Object.assign {}, tag,
 			title: tag.title + ' x'
-			link: linkWithoutTag selectedTags, tag.title
+			link: linkWithoutTag selectedTags, tag.id
 	), selectedTags
 
 
@@ -64,8 +64,8 @@ listOfDocuments = (tags, documents, selectedTags) ->
 
 	tagsOfDocument = (doc) ->
 		tags
-		.filter (tag) -> tag.title in doc.tags
-		.map (tag) -> Object.assign {}, tag, link: linkWithTag selectedTags, tag.title
+		.filter (tag) -> tag.id in doc.tags
+		.map (tag) -> Object.assign {}, tag, link: linkWithTag selectedTags, tag.id
 
 	documents
 	.map (doc) -> "

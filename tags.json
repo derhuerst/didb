@@ -1,15 +1,55 @@
 [
-	{"title": "Tagesablauf", "color": "#2ecc71"},
-	{"title": "Sozialleben", "color": "#2ecc71"},
-	{"title": "Perfekt", "color": "#2ecc71"},
-	{"title": "Bildergeschichte", "color": "#2ecc71"},
-	{"title": "Uhrzeiten", "color": "#2ecc71"},
-	{"title": "Imperativ", "color": "#e67e22"},
-	{"title": "Wegbeschreibung", "color": "#e67e22"},
-	{"title": "Wo", "color": "#e67e22"},
-	{"title": "Ort", "color": "#e67e22"},
-	{"title": "Familie", "color": "#3498db"},
-	{"title": "Text schreiben", "color": "#3498db"},
-	{"title": "Präpositionen", "color": "#3498db"},
-	{"title": "Haushalt", "color": "#3498db"}
+	{
+		"title": "Tagesablauf",
+		"id": "tagesablauf",
+		"color": "#2ecc71"
+	}, {
+		"title": "Sozialleben",
+		"id": "sozialleben",
+		"color": "#2ecc71"
+	}, {
+		"title": "Perfekt",
+		"id": "perfekt",
+		"color": "#2ecc71"
+	}, {
+		"title": "Bildergeschichte",
+		"id": "Bildergeschichte",
+		"color": "#2ecc71"
+	}, {
+		"title": "Uhrzeiten",
+		"id": "uhrzeiten",
+		"color": "#2ecc71"
+	}, {
+		"title": "Imperativ",
+		"id": "imperativ",
+		"color": "#e67e22"
+	}, {
+		"title": "Wegbeschreibung",
+		"id": "wegbeschreibung",
+		"color": "#e67e22"
+	}, {
+		"title": "Wo?",
+		"id": "wo",
+		"color": "#e67e22"
+	}, {
+		"title": "Ort",
+		"id": "ort",
+		"color": "#e67e22"
+	}, {
+		"title": "Familie",
+		"id": "familie",
+		"color": "#3498db"
+	}, {
+		"title": "Text schreiben",
+		"id": "text-schreiben",
+		"color": "#3498db"
+	}, {
+		"title": "Präpositionen",
+		"id": "praepositionen",
+		"color": "#3498db"
+	}, {
+		"title": "Haushalt",
+		"id": "haushalt",
+		"color": "#3498db"
+	}
 ]
