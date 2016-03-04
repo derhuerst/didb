@@ -54,7 +54,13 @@ listOfSelectedTags = (tags, selectedTags) ->
 
 listOfDocuments = (tags, documents, selectedTags) ->
 	if selectedTags.length > 0
-		documents = documents.filter (doc) -> selectedTags.some (tag) -> tag in doc.tags
+		# compute nr of matched tags
+		documents = documents
+			.map (doc) ->
+				Object.assign {}, doc,
+					matches: selectedTags.filter((tag) -> tag in doc.tags).length
+			.filter (doc) -> doc.matches > 0
+			.sort (a, b) -> b.matches - a.matches
 
 	tagsOfDocument = (doc) ->
 		tags
