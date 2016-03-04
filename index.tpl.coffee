@@ -27,42 +27,51 @@ linkWithoutTag = (tags, oldTag) ->
 
 
 
-listOfAllTags = (tags, selectedTags) ->
+listOfTags = (tags, selectedTags) ->
 	tags
-	.filter (tag) -> not (tag.title in selectedTags)
 	.map (tag) -> "
-<li class=\"tag\">
-	<a href=\"#{linkWithTag selectedTags, tag.title}\">#{tag.title}</a>
+<li class=\"tag\" style=\"background-color: #{tag.color}\">
+	<a href=\"#{tag.link}\">#{tag.title}</a>
 </li>"
 	.join ''
 
-
+listOfAvailableTags = (tags, selectedTags) ->
+	listOfTags (tags
+		.filter (tag) -> not (tag.title in selectedTags)
+		.map (tag) -> Object.assign {}, tag, link: linkWithTag selectedTags, tag.title
+	), selectedTags
 
 listOfSelectedTags = (tags, selectedTags) ->
 	'<p>No tags selected.</p>' if selectedTags.length is 0
-
-	tags
-	.filter (tag) -> tag.title in selectedTags
-	.map (tag) -> "
-<li class=\"tag\">
-	<a href=\"#{linkWithoutTag selectedTags, tag.title}\" alt=\"remove the tag #{tag.title}\">#{tag.title} x</a>
-</li>"
-	.join ''
+	listOfTags (tags
+		.filter (tag) -> tag.title in selectedTags
+		.map (tag) -> Object.assign {}, tag,
+			title: tag.title + ' x'
+			link: linkWithoutTag selectedTags, tag.title
+	), selectedTags
 
 
 
-listOfDocuments = (documents, selectedTags) ->
+listOfDocuments = (tags, documents, selectedTags) ->
 	if selectedTags.length > 0
 		documents = documents.filter (doc) -> selectedTags.some (tag) -> tag in doc.tags
 
+	tagsOfDocument = (doc) ->
+		tags
+		.filter (tag) -> tag.title in doc.tags
+		.map (tag) -> Object.assign {}, tag, link: linkWithTag selectedTags, tag.title
+
 	documents
-	.map (document) -> "
+	.map (doc) -> "
 <li class=\"document\">
-	<h2>#{document.title}</h2>
-	<span class=\"author\">by #{document.author}</span>
-	<img class=\"picture\" src=\"#{document.picture}\"/>
-	<p class=\"description\">#{document.description}</p>
-	<a class=\"button download\" href=\"./documents/#{document.file}\">Download</a>
+	<h2>#{doc.title}</h2>
+	<span class=\"document-author\">by #{doc.author}</span>
+	<img class=\"document-picture\" src=\"#{doc.picture}\"/>
+	<p class=\"document-description\">#{doc.description}</p>
+	<ul class=\"document-tags\">
+		#{listOfTags tagsOfDocument doc}
+	</ul>
+	<a class=\"button document-download\" href=\"./documents/#{doc.file}\">Download</a>
 </li>"
 	.join ''
 
@@ -81,12 +90,12 @@ module.exports = (req, tags, documents) ->
 		</ul>
 		<h2>All Tags</h2>
 		<ul id=\"tags-all\">
-			#{listOfAllTags tags, selectedTags}
+			#{listOfAvailableTags tags, selectedTags}
 		</ul>
 	</nav>
 	<main id=\"documents\">
 		<ul id=\"documents-list\">
-			#{listOfDocuments documents, selectedTags}
+			#{listOfDocuments tags, documents, selectedTags}
 		</ul>
 	</main>
 </div>" + footer
