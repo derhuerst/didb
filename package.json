@@ -1,0 +1,19 @@
+{
+	"name":              "didb",
+	"description":       "Website for Deutschkurs in a Box materials.",
+	"version":           "0.1.0",
+	"main":              "app.coffee",
+	"private":           true,
+	"keywords":          ["german", "classes", "berlin", "tags"],
+	"author":            "Jannis R <mail@jannisr.de>",
+	"homepage":          "https://github.com/derhuerst/didb",
+	"repository":        "git://github.com/derhuerst/didb.git",
+	"license":           "GPL",
+	"dependencies": {
+		"coffee-script": "^1.10",
+		"express":       "^2.3"
+	},
+	"scripts": {
+		"server":        "coffee app.coffee"
+	}
+}
