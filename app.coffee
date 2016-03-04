@@ -1,5 +1,4 @@
 express =   require 'express'
-fs =        require 'fs'
 
 documents = require './documents.json'
 tags =      require './tags.json'

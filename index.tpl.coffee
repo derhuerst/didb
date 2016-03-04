@@ -22,8 +22,10 @@ linkWithTag = (selectedTags, newTag) ->
 	selectedTags = selectedTags.concat newTag if not (newTag in selectedTags)
 	'./?tags=' + selectedTags.join ','
 
-linkWithoutTag = (tags, oldTag) ->
-	'./?tags=' + tags.filter((tag) -> tag isnt oldTag).join ','
+linkWithoutTag = (selectedTags, oldTag) ->
+	selectedTags = selectedTags.filter (tag) -> tag isnt oldTag
+	return './' if selectedTags.length is 0
+	'./?tags=' + selectedTags.join ','
 
 
 
@@ -46,7 +48,7 @@ listOfSelectedTags = (tags, selectedTags) ->
 	listOfTags (tags
 		.filter (tag) -> tag.id in selectedTags
 		.map (tag) -> Object.assign {}, tag,
-			title: tag.title + ' x'
+			title: tag.title + ' ✘'
 			link: linkWithoutTag selectedTags, tag.id
 	), selectedTags
 
@@ -72,7 +74,7 @@ listOfDocuments = (tags, documents, selectedTags) ->
 <li class=\"document\">
 	<h2>#{doc.title}</h2>
 	<span class=\"document-author\">by #{doc.author}</span>
-	<img class=\"document-picture\" src=\"#{doc.picture}\"/>
+	<img class=\"document-picture\" src=\"documents/#{doc.picture}\"/>
 	<p class=\"document-description\">#{doc.description}</p>
 	<ul class=\"document-tags\">
 		#{listOfTags tagsOfDocument doc}
