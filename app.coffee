@@ -1,4 +1,7 @@
+#!/usr/bin/env coffee
+
 express =   require 'express'
+yargs =     require 'yargs'
 
 documents = require './documents.json'
 tags =      require './tags.json'
@@ -127,4 +130,4 @@ app = express()
 app.get '/', (req, res) -> res.end tpl req, tags, documents
 
 app.use express.static __dirname
-app.listen 10000
+app.listen yargs.argv.port || 10000

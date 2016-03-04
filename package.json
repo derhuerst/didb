@@ -11,12 +11,14 @@
 	"license":           "GPL",
 	"dependencies": {
 		"coffee-script": "^1.10",
-		"express":       "^2.3",
+		"express":       "^4.13.4",
+		"yargs":         "^4.2.0",
 		"forever":       "^0.15.1"
 	},
 	"scripts": {
-		"server":        "coffee app.coffee",
-		"start":         "forever start -c coffee ./app.coffee",
+		"dev-server":    "coffee app.coffee --port 10000",
+		"server":        "coffee app.coffee --port 80",
+		"start":         "forever start -c coffee ./app.coffee --port 80",
 		"stop":          "forever stop ./app.coffee",
 		"deploy":        "rsync -rav -e 'ssh -i ./.digital-ocean' --exclude '.*' . root@46.101.109.127:~/didb/"
 	}
