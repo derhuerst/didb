@@ -15,24 +15,24 @@ readData = (cb) ->
 
 
 
-head = "
+head = '
 <!DOCTYPE HTML>
 <html>
 <head>
-	<meta charset=\"utf-8\"/>
+	<meta charset="utf-8"/>
 	<title>didb</title>
-	<meta name=\"description\" content=\"Sammlung von Lehrmaterialien nach Schlagwörter sortiert.\"/>
-	<meta name=\"keywords\" content=\"todo\"/>
-	<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>
-	<link rel=\"stylesheet\" href=\"./styles.css\"/>
+	<meta name="description" content="Sammlung von Lehrmaterialien nach Schlagwörter sortiert."/>
+	<meta name="keywords" content="todo"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	<link rel="stylesheet" href="./styles.css"/>
 </head>
 <body>
-	<img id=\"logo\" src=\"./logo.png\"/>
-	<h1>Deutschkurs in der Box</h1>"
+	<img id="logo" src="./logo.png"/>
+	<h1>Deutschkurs in der Box</h1>'
 
-footer = "
+footer = '
 </body>
-</html>"
+</html>'
 
 
 
@@ -56,6 +56,7 @@ listOfTags = (tags, selectedTags) ->
 	.join ''
 
 listOfAvailableTags = (tags, selectedTags) ->
+	return '<p>Keine Schlagwörter.</p>' if tags.length is 0
 	listOfTags (tags
 		.filter (tag) -> not (tag.id in selectedTags)
 		.map (tag) -> Object.assign {}, tag, link: linkWithTag selectedTags, tag.id
@@ -73,6 +74,7 @@ listOfSelectedTags = (tags, selectedTags) ->
 
 
 listOfDocuments = (tags, documents, selectedTags) ->
+	return '<p>Keine Dokumente.</p>' if documents.length is 0
 	if selectedTags.length > 0
 		# compute nr of matched tags
 		documents = documents

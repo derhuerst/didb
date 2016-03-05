@@ -1,29 +1,8 @@
 #!/usr/bin/env coffee
 
 fs =        require 'fs'
+escape =    require 'slugg'
 
-
-
-
-
-head = "
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta charset=\"utf-8\"/>
-	<title>didb</title>
-	<meta name=\"description\" content=\"Sammlung von Lehrmaterialien nach Schlagwörter sortiert.\"/>
-	<meta name=\"keywords\" content=\"todo\"/>
-	<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/>
-	<link rel=\"stylesheet\" href=\"./styles.css\"/>
-</head>
-<body>
-	<img id=\"logo\" src=\"./logo.png\"/>
-	<h1>Deutschkurs in der Box</h1>"
-
-footer = "
-</body>
-</html>"
 
 
 
@@ -40,8 +19,8 @@ module.exports = (req, res) ->
 	document = req.body
 	document.tags = document.tags
 		.split ','
-		.map (tag) -> tag.trim()
+		.map (tag) -> escape tag.trim()
 		.filter (tag) -> tag.length > 0
 	addDocument document, (err) ->
 		res.status(500).send err.message if err
-		res.redirect '/backend'
+		res.redirect './documents'
