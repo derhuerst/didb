@@ -54,19 +54,19 @@ linkWithoutTag = (selectedTags, oldTag) ->
 listOfTags = (tags, selectedTags) ->
 	tags
 	.map (tag) -> "
-<li class=\"tag\" style=\"background-color: #{tag.color}\">
-	<a href=\"#{tag.link}\">#{tag.title}</a>
+<li>
+	<a class=\"tag\" style=\"background-color: #{tag.color}\" href=\"#{tag.link}\">#{tag.title}</a>
 </li>"
 	.join ''
 
 listOfAvailableTags = (tags, selectedTags) ->
 	listOfTags (tags
-		.filter (tag) -> not (tag.title in selectedTags)
+		.filter (tag) -> not (tag.id in selectedTags)
 		.map (tag) -> Object.assign {}, tag, link: linkWithTag selectedTags, tag.id
 	), selectedTags
 
 listOfSelectedTags = (tags, selectedTags) ->
-	'<p>No tags selected.</p>' if selectedTags.length is 0
+	return '<p>No tags selected.</p>' if selectedTags.length is 0
 	listOfTags (tags
 		.filter (tag) -> tag.id in selectedTags
 		.map (tag) -> Object.assign {}, tag,
