@@ -15,14 +15,22 @@ ul { padding-left: 0; list-style: none; }
 img { margin: 1rem 0; }
 p { margin: 1rem 0; }
 
+input, textarea {
+	display: block; margin: 1rem 0; padding: .4em;
+	font-size: 90%; min-width: 30rem;
+	border: 1px solid #999; border-radius: .2em;
+	box-sizing: border-box; }
+input[type="submit"] { min-width: 0; cursor: pointer; border: none; }
+textarea { min-height: 6rem; }
 
-a.button, .tag {
+
+a.button, .tag, input[type="submit"] {
 	display: inline-block; padding: .2em .4em; border-radius: .2em;
 	color: white; text-decoration: none; }
 .tag { margin: .1em; }
-a.button { margin: 1rem 0; background-color: #2980b9; }
+a.button, input[type="submit"] { margin: 1rem 0; background-color: #2980b9; }
 
-a.button:hover, .tag:hover { opacity: .9; }
+a.button:hover, .tag:hover, input[type="submit"]:hover { opacity: .9; }
 
 
 h1, h2 { margin: 1rem 0; line-height: 1; color: #34495e; }
