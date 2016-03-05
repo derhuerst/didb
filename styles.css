@@ -1,6 +1,14 @@
+@font-face {
+	font-family: 'Roboto';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Roboto'), local('Roboto-Regular'), url(./roboto-latin.woff2) format('woff2');
+}
+
+
 body {
 	margin: 0 auto; padding: 0 1rem;
-	font-size: 110%; font-family: "Helvetica Neue", sans-serif;
+	font-size: 105%; font-family: "Roboto", "Helvetica Neue", sans-serif;
 }
 
 ul { padding-left: 0; list-style: none; }
