@@ -89,7 +89,11 @@ listOfDocuments = (tags, documents, selectedTags) ->
 	tagsOfDocument = (doc) ->
 		tags
 		.filter (tag) -> tag.id in doc.tags
-		.map (tag) -> Object.assign {}, tag, link: linkWithTag selectedTags, tag.id
+		.map (tag) ->
+			Object.assign {}, tag, link: linkWithTag selectedTags, tag.id
+		.map (tag) ->
+			tag.title += ' ✓' if tag.id in selectedTags
+			return tag
 
 	documents
 	.map (doc) -> "
