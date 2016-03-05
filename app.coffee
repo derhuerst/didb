@@ -67,7 +67,7 @@ listOfAvailableTags = (tags, selectedTags) ->
 	), selectedTags
 
 listOfSelectedTags = (tags, selectedTags) ->
-	return '<p>No tags selected.</p>' if selectedTags.length is 0
+	return '<p>Du hast keine Schlagwörter ausgewählt.</p>' if selectedTags.length is 0
 	listOfTags (tags
 		.filter (tag) -> tag.id in selectedTags
 		.map (tag) -> Object.assign {}, tag,
@@ -100,7 +100,7 @@ listOfDocuments = (tags, documents, selectedTags) ->
 	.map (doc) -> "
 <li class=\"document\">
 	<h2>#{doc.title}</h2>
-	<span class=\"document-author\">by #{doc.author}</span>
+	<span class=\"document-author\">Autor: #{doc.author}</span>
 	<img class=\"document-picture\" src=\"documents/#{doc.picture}\"/>
 	<p class=\"document-description\">#{doc.description}</p>
 	<ul class=\"document-tags\">
@@ -119,11 +119,11 @@ tpl = (req, tags, documents) ->
 	head + "
 <div id=\"body\">
 	<nav id=\"tags\">
-		<h2>Selected Tags</h2>
+		<h2>Ausgewählte Schlagwörter</h2>
 		<ul id=\"tags-selected\">
 			#{listOfSelectedTags tags, selectedTags}
 		</ul>
-		<h2>All Tags</h2>
+		<h2>Alle Schlagwörter</h2>
 		<ul id=\"tags-all\">
 			#{listOfAvailableTags tags, selectedTags}
 		</ul>
