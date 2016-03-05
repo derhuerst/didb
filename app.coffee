@@ -82,9 +82,9 @@ listOfDocuments = (tags, documents, selectedTags) ->
 		documents = documents
 			.map (doc) ->
 				Object.assign {}, doc,
-					matches: selectedTags.filter((tag) -> tag in doc.tags).length
-			.filter (doc) -> doc.matches > 0
-			.sort (a, b) -> b.matches - a.matches
+					relevance: selectedTags.filter((tag) -> tag in doc.tags).length / doc.tags.length
+			.filter (doc) -> doc.relevance > 0
+			.sort (a, b) -> b.relevance - a.relevance
 
 	tagsOfDocument = (doc) ->
 		tags
