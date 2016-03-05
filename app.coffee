@@ -32,6 +32,7 @@ head = "
 	<link rel=\"stylesheet\" href=\"./styles.css\"/>
 </head>
 <body>
+	<img id=\"logo\" src=\"./logo.png\"/>
 	<h1>Deutschkurs in der Box</h1>"
 
 footer = "
