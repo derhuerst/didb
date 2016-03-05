@@ -8,6 +8,7 @@ yargs =       require 'yargs'
 frontend =    require './frontend'
 backend =     require './backend'
 addDocument = require './add-document'
+addTag =      require './add-tag'
 
 
 
@@ -16,9 +17,10 @@ addDocument = require './add-document'
 app = express()
 app.use bodyParser.urlencoded extended: true
 
-app.get '/', frontend
-app.get '/backend', backend
+app.get '/',              frontend
+app.get '/backend',       backend
 app.post '/add-document', addDocument
+app.post '/add-tag',      addTag
 
 app.use express.static __dirname
 app.listen yargs.argv.port || 10000

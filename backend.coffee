@@ -31,6 +31,7 @@ footer = "
 module.exports = (req, res) ->
 	res.send head + "
 <div id=\"add-document\">
+	<h2>Dokumente hinzufügen</h2>
 	<form action=\"/add-document\" method=\"post\">
 		<input type=\"text\" name=\"title\" value=\"\" placeholder=\"Titel\"/>
 		<input type=\"text\" name=\"author\" value=\"\" placeholder=\"Autor_in\"/>
@@ -38,6 +39,14 @@ module.exports = (req, res) ->
 		<input type=\"text\" name=\"tags\" value=\"\" placeholder=\"Tags, getrennt mit Komma\"/>
 		<input type=\"text\" name=\"file\" value=\"\" placeholder=\"Dateiname des Dokuments\"/>
 		<input type=\"text\" name=\"picture\" value=\"\" placeholder=\"Dateiname des Bildes\"/>
+		<input type=\"submit\" value=\"Allet klar.\">
+	</form>
+</div>
+<div id=\"add-tag\">
+	<h2>Tag hinzufügen</h2>
+	<form action=\"/add-tag\" method=\"post\">
+		<input type=\"text\" name=\"title\" value=\"\" placeholder=\"Titel\"/>
+		<input type=\"text\" name=\"color\" value=\"\" placeholder=\"Hex-Farbe, zb ab34e7\"/>
 		<input type=\"submit\" value=\"Allet klar.\">
 	</form>
 </div>" + footer
