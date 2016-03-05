@@ -27,14 +27,20 @@ a.button:hover, .tag:hover { opacity: .9; }
 
 h1, h2 { margin: 1rem 0; line-height: 1; color: #34495e; }
 h1 { display: inline-block; font-size: 3rem; line-height: 4rem; }
+h2 { font-size: 1.4rem; }
 
 
 #logo { display: inline-block; margin-right: .5rem; float: left; max-height: 4rem; }
 
 
 #body { display: flex; clear: both; }
+
 #documents { flex: 1; order: -1; }
 #tags { flex: 0 0 18rem; }
+@media screen and (max-width: 60rem) {
+	#body { display: block; }
+	#documents, #tags { flex: none; margin: 2rem 0; }
+}
 
 #documents { padding-right: 1rem; }
 #tags { padding-left: 1rem; }
