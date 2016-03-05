@@ -1,10 +1,20 @@
 #!/usr/bin/env coffee
 
 express =   require 'express'
+fs =        require 'fs'
 yargs =     require 'yargs'
 
 documents = require './documents.json'
 tags =      require './tags.json'
+
+readData = (cb) ->
+	fs.readFile './documents.json', (err, data) ->
+		return cb err if err
+		documents = JSON.parse data
+		fs.readFile './tags.json', (err, data) ->
+			return cb err if err
+			tags = JSON.parse data
+			cb null, tags, documents
 
 
 
@@ -127,7 +137,10 @@ tpl = (req, tags, documents) ->
 
 app = express()
 
-app.get '/', (req, res) -> res.end tpl req, tags, documents
+app.get '/', (req, res) ->
+	readData (err, tags, documents) ->
+		return res.status(500).send err.message if err
+		res.end tpl req, tags, documents
 
 app.use express.static __dirname
 app.listen yargs.argv.port || 10000
