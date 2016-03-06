@@ -20,6 +20,7 @@ module.exports = (req, res) ->
 		.split ','
 		.map (tag) -> escape tag.trim()
 		.filter (tag) -> tag.length > 0
+	document.id = escape document.title
 	addDocument document, (err) ->
 		return common.sendError res, err if err
 		res.redirect './documents'

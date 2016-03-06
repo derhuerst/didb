@@ -1,0 +1,17 @@
+#!/usr/bin/env coffee
+
+fs =     require 'fs'
+escape = require 'slugg'
+
+common = require './common'
+
+
+
+
+
+module.exports = (req, res) -> common.readDocs (err, docs) ->
+	return common.sendError res, err if err
+	docs = docs.filter (doc) -> doc.id isnt req.params.id
+	common.writeDocs docs, (err) ->
+		return common.sendError res, err if err
+		res.end 'ok'

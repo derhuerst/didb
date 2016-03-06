@@ -75,4 +75,4 @@ h2 { font-size: 1.4rem; }
 #documents .document .document-download {
 	background-color: #555; position: absolute; top: 0; right: 1rem; }
 
-#delete-tags .tag-delete { margin: 0; }
+#delete-tags .tag-delete, #delete-documents .document-delete { margin: .1em; }
