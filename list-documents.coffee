@@ -2,8 +2,25 @@
 
 common = require './common'
 
-module.exports = (req, res) -> res.send common.header + '
-<div class=\"right-column\">
+
+
+listOfDocs = (docs) ->
+	return '<p>Keine Dokumente.</p>' if docs.length is 0
+	docs
+	.map (doc) -> "
+<li class=\"document\">
+	<span>#{doc.title}</span>
+	<button class=\"document-delete\" data-id=\"#{doc.id}\" type=\"button\">✘</button>
+</li>"
+	.join ''
+
+
+
+module.exports = (req, res) -> common.readDocs (err, docs) ->
+	return common.sendError res, err if err
+
+	res.send common.header + '
+<div class="right-column">
 	<h2>Dokument hinzufügen</h2>
 	<form action="./documents" method="post">
 		<input type="text" name="title" value="" placeholder="Titel"/>
@@ -14,8 +31,10 @@ module.exports = (req, res) -> res.send common.header + '
 		<input type="text" name="picture" value="" placeholder="Dateiname des Bildes"/>
 		<input type="submit" value="Allet klar.">
 	</form>
-</div>
-<div class="left-column">
+</div>' + "
+<div id=\"delete-documents\" class=\"left-column\">
 	<h2>Dokumente</h2>
-	todo
-</div>' + common.footer
+	<ul>
+		#{listOfDocs docs}
+	</ul>
+</div>" + common.footer
