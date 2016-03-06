@@ -54,15 +54,16 @@ module.exports =
 <head>
 	<meta charset="utf-8"/>
 	<title>didb</title>
-	<meta name="description" content="Sammlung von Lehrmaterialien nach Schlagwörter sortiert."/>
-	<meta name="keywords" content="todo"/>
+	<meta name="description" content="Arbeitsblattsammlung für den ehrenamtlichen Deutschunterricht, versehen mit Schlagwörtern."/>
+	<meta name="keywords" content="material, unterricht, deutsch, german, ehrenamtlich, geflüchtete, flüchtlinge, refugees, tags, berlin"/>
+	<meta name="author" content="Lucia Fc"/>
 	<meta name="viewport" content="width=device-width,initial-scale=1"/>
 	<link rel="stylesheet" href="/styles.css"/>
 	<script src="/main.js"></script>
 </head>
 <body>
 <img id="logo" src="/logo.png"/>
-<h1>Deutschkurs in der Box</h1>
+<h1>Material des Deutschkurses in der Box</h1>
 <div id="body">'
 
 	footer: '
