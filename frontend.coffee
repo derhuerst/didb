@@ -1,38 +1,8 @@
 #!/usr/bin/env coffee
 
-fs =        require 'fs'
-
-readData = (cb) ->
-	fs.readFile './documents.json', (err, data) ->
-		return cb err if err
-		documents = JSON.parse data
-		fs.readFile './tags.json', (err, data) ->
-			return cb err if err
-			tags = JSON.parse data
-			cb null, tags, documents
+common =    require './common'
 
 
-
-
-
-head = '
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta charset="utf-8"/>
-	<title>didb</title>
-	<meta name="description" content="Sammlung von Lehrmaterialien nach Schlagwörter sortiert."/>
-	<meta name="keywords" content="todo"/>
-	<meta name="viewport" content="width=device-width,initial-scale=1"/>
-	<link rel="stylesheet" href="./styles.css"/>
-</head>
-<body>
-	<img id="logo" src="./logo.png"/>
-	<h1>Deutschkurs in der Box</h1>'
-
-footer = '
-</body>
-</html>'
 
 
 
@@ -73,11 +43,11 @@ listOfSelectedTags = (tags, selectedTags) ->
 
 
 
-listOfDocuments = (tags, documents, selectedTags) ->
-	return '<p>Keine Dokumente.</p>' if documents.length is 0
+listOfDocs = (tags, docs, selectedTags) ->
+	return '<p>Keine Dokumente.</p>' if docs.length is 0
 	if selectedTags.length > 0
 		# compute nr of matched tags
-		documents = documents
+		docs = docs
 			.map (doc) ->
 				Object.assign {}, doc,
 					relevance: selectedTags.filter((tag) -> tag in doc.tags).length / doc.tags.length
@@ -93,7 +63,7 @@ listOfDocuments = (tags, documents, selectedTags) ->
 			tag.title += ' ✓' if tag.id in selectedTags
 			return tag
 
-	documents
+	docs
 	.map (doc) -> "
 <li class=\"document\">
 	<h2>#{doc.title}</h2>
@@ -109,28 +79,25 @@ listOfDocuments = (tags, documents, selectedTags) ->
 
 
 
-module.exports = (req, res) ->
-	readData (err, tags, documents) ->
-		return res.status(500).send err.message if err
+module.exports = (req, res) -> common.readDocsAndTags (err, docs, tags) ->
+	return common.sendError res, err if err
 
-		selectedTags = (req.query.tags ? '').split ','
-			.filter (tag) -> tag.length > 0
+	selectedTags = (req.query.tags ? '').split ','
+		.filter (tag) -> tag.length > 0
 
-		res.send head + "
-	<div id=\"body\">
-		<nav id=\"tags\">
-			<h2>Ausgewählte Schlagwörter</h2>
-			<ul id=\"tags-selected\">
-				#{listOfSelectedTags tags, selectedTags}
-			</ul>
-			<h2>Alle Schlagwörter</h2>
-			<ul id=\"tags-all\">
-				#{listOfAvailableTags tags, selectedTags}
-			</ul>
-		</nav>
-		<main id=\"documents\">
-			<ul id=\"documents-list\">
-				#{listOfDocuments tags, documents, selectedTags}
-			</ul>
-		</main>
-	</div>" + footer
+	res.end common.header + "
+<nav id=\"tags\" class=\"right-column\">
+	<h2>Ausgewählte Schlagwörter</h2>
+	<ul id=\"tags-selected\">
+		#{listOfSelectedTags tags, selectedTags}
+	</ul>
+	<h2>Alle Schlagwörter</h2>
+	<ul id=\"tags-all\">
+		#{listOfAvailableTags tags, selectedTags}
+	</ul>
+</nav>
+<main id=\"documents\" class=\"left-column\">
+	<ul id=\"documents-list\">
+		#{listOfDocs tags, docs, selectedTags}
+	</ul>
+</main>" + common.footer

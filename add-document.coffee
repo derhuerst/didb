@@ -1,19 +1,18 @@
 #!/usr/bin/env coffee
 
-fs =        require 'fs'
-escape =    require 'slugg'
+fs =     require 'fs'
+escape = require 'slugg'
+
+common = require './common'
 
 
 
 
 
 addDocument = (doc, cb) ->
-	fs.readFile './documents.json', (err, data) ->
+	common.readDocs (err, docs) ->
 		return cb err if err
-		documents = JSON.parse data
-		documents.push doc
-		fs.writeFile './documents.json', JSON.stringify(documents), (err) ->
-			cb err ? null
+		common.writeDocs docs.concat(doc), cb
 
 module.exports = (req, res) ->
 	document = req.body
@@ -22,5 +21,5 @@ module.exports = (req, res) ->
 		.map (tag) -> escape tag.trim()
 		.filter (tag) -> tag.length > 0
 	addDocument document, (err) ->
-		res.status(500).send err.message if err
+		return common.sendError res, err if err
 		res.redirect './documents'
