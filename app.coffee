@@ -20,11 +20,12 @@ auth = (req, res, cb) ->
 app = express()
 app.use bodyParser.urlencoded extended: true
 
-app.get '/',                 require './frontend'
-app.get '/documents',  auth, require './list-documents'
-app.post '/documents', auth, require './add-document'
-app.get '/tags',       auth, require './list-tags'
-app.post '/tags',      auth, require './add-tag'
+app.get '/',                  require './frontend'
+app.get '/documents',   auth, require './list-documents'
+app.post '/documents',  auth, require './add-document'
+app.get '/tags',        auth, require './list-tags'
+app.post '/tags',       auth, require './add-tag'
+app.delete '/tags/:id', auth, require './delete-tag'
 
 app.use express.static __dirname
 app.listen yargs.argv.port || 10000

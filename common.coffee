@@ -58,6 +58,7 @@ module.exports =
 	<meta name="keywords" content="todo"/>
 	<meta name="viewport" content="width=device-width,initial-scale=1"/>
 	<link rel="stylesheet" href="/styles.css"/>
+	<script src="/main.js"></script>
 </head>
 <body>
 <img id="logo" src="/logo.png"/>

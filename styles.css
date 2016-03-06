@@ -24,13 +24,14 @@ input[type="submit"] { min-width: 0; cursor: pointer; border: none; }
 textarea { min-height: 6rem; }
 
 
-a.button, .tag, input[type="submit"] {
+a.button, .tag, input[type="submit"], button {
 	display: inline-block; padding: .2em .4em; border-radius: .2em;
-	color: white; text-decoration: none; }
+	color: white; text-decoration: none; cursor: pointer; }
 .tag { margin: .1em; }
-a.button, input[type="submit"] { margin: 1rem 0; background-color: #2980b9; }
+button { border: none; font-size: 90%; }
+a.button, input[type="submit"], button { margin: 1rem 0; background-color: #2980b9; }
 
-a.button:hover, .tag:hover, input[type="submit"]:hover { opacity: .9; }
+a.button:hover, .tag:hover, input[type="submit"]:hover, button:hover { opacity: .9; }
 
 
 h1, h2 { margin: 1rem 0; line-height: 1; color: #34495e; }
@@ -74,4 +75,4 @@ h2 { font-size: 1.4rem; }
 #documents .document .document-download {
 	background-color: #555; position: absolute; top: 0; right: 1rem; }
 
-#delete-tags input[type="submit"], #delete-tags form { display: inline-block; }
+#delete-tags .tag-delete { margin: 0; }

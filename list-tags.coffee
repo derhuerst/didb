@@ -4,16 +4,30 @@ common = require './common'
 
 
 
+js = "
+<script>
+'use strict';
+let buttons = document.querySelectorAll('#delete-tags .tag-delete');
+for (let button of buttons) {
+	button.addEventListener('click', function () {
+		deleteTag(button.getAttribute('data-id'), function (err) {
+			if (err) button.innerHTML = '☹';
+			else button.innerHTML = '✓';
+		})
+	})
+}
+</script>"
+
+
+
 listOfTags = (tags) ->
 	return '<p>Keine Schlagwörter.</p>' if tags.length is 0
 	tags
 	.map (tag) -> Object.assign {}, tag, link: "/?tags=#{tag.id}"
 	.map (tag) -> "
-<li class=\"tag\">
+<li>
 	<a class=\"tag\" style=\"background-color: #{tag.color}\" href=\"#{tag.link}\">#{tag.title}</a>
-	<form action=\"/tags/#{tag.id}\" method=\"delete\">
-		<input type=\"submit\" value=\"✘\"/>
-	</form>
+	<button class=\"tag-delete\" data-id=\"#{tag.id}\" type=\"button\">✘</button>
 </li>"
 	.join ''
 
@@ -33,7 +47,7 @@ module.exports = (req, res) -> common.readTags (err, tags) ->
 </div>' + "
 <div id=\"delete-tags\" class=\"left-column\">
 	<h2>Schlagwörter</h2>
-	<ul id=\"tags\">
+	<ul>
 		#{listOfTags tags}
 	</ul>
-</div>" + common.footer
+</div>" + js + common.footer
