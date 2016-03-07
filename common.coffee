@@ -63,7 +63,8 @@ module.exports =
 </head>
 <body>
 <img id="logo" src="/logo.png"/>
-<h1>Material des Deutschkurses in der Box</h1>
+<h1>Arbeits- und Übungsblätter für den ehrenamtlichen Deutschunterricht</h1>
+<p>Im Projekt <em>Deutschkurs in der Box</em> sind wir auf mehrere wertvolle Arbeitsblätter gestoßen, die wir hier gesammelt und mit Schlagwörtern versehen haben für eine bessere Übersicht des vorhandenen verfügbaren Angebots.</p>
 <div id="body">'
 
 	footer: '
