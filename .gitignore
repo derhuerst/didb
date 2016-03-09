@@ -9,4 +9,4 @@ data
 .digital-ocean
 tags.json
 documents.json
-self-signed.key
+.self-signed.key
