@@ -6,7 +6,7 @@ path = require 'path'
 module.exports =
 
 	readJSON: (file, cb) ->
-		fs.readFile path.join('.', file), (err, data) ->
+		fs.readFile path.join(__dirname, file), (err, data) ->
 			return cb err if err
 			try
 				data = JSON.parse data
@@ -14,8 +14,8 @@ module.exports =
 				return cb err
 			cb null, data
 
-	readDocs: (cb) -> @readJSON './documents.json', cb
-	readTags: (cb) -> @readJSON './tags.json', cb
+	readDocs: (cb) -> @readJSON '../data/documents.json', cb
+	readTags: (cb) -> @readJSON '../data/tags.json', cb
 	readDocsAndTags: (cb) ->
 		docs = null; tags = null
 		@readDocs (err, data) ->
@@ -35,10 +35,10 @@ module.exports =
 			data = JSON.stringify data
 		catch err
 			return cb err
-		fs.writeFile path.join('.', file), data, cb
+		fs.writeFile path.join(__dirname, file), data, cb
 
-	writeDocs: (d, cb) -> @writeJSON './documents.json', d, cb
-	writeTags: (d, cb) -> @writeJSON './tags.json', d, cb
+	writeDocs: (d, cb) -> @writeJSON '../data/documents.json', d, cb
+	writeTags: (d, cb) -> @writeJSON '../data/tags.json', d, cb
 
 
 
@@ -58,11 +58,11 @@ module.exports =
 	<meta name="keywords" content="material, unterricht, deutsch, german, ehrenamtlich, geflüchtete, flüchtlinge, refugees, tags, berlin"/>
 	<meta name="author" content="Lucia Fc"/>
 	<meta name="viewport" content="width=device-width,initial-scale=1"/>
-	<link rel="stylesheet" href="/styles.css"/>
-	<script src="/main.js"></script>
+	<link rel="stylesheet" href="/assets/styles.css"/>
+	<script src="/assets/main.js"></script>
 </head>
 <body>
-<img id="logo" src="/logo.png"/>
+<img id="logo" src="/assets/logo.png"/>
 <h1>Arbeits- und Übungsblätter für den ehrenamtlichen Deutschunterricht</h1>
 <p>Im Projekt <em>Deutschkurs in der Box</em> sind wir auf mehrere wertvolle Arbeitsblätter gestoßen, die wir hier gesammelt und mit Schlagwörtern versehen haben für eine bessere Übersicht des vorhandenen verfügbaren Angebots.</p>
 <div id="body">'

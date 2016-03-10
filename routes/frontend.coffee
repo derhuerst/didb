@@ -73,7 +73,7 @@ listOfDocs = (tags, docs, selectedTags) ->
 	<ul class=\"document-tags\">
 		#{listOfTags tagsOfDocument doc}
 	</ul>
-	<a class=\"button document-download\" href=\"./data/#{doc.file}\">Download</a>
+	<a class=\"button document-download\" href=\"./documents/#{doc.file}\">Download</a>
 </li>"
 	.join ''
 

@@ -26,12 +26,12 @@ server = https.createServer {
 	key:  fs.readFileSync './.self-signed.key'
 }, app
 
-app.get '/documents',        require './list-documents'
-app.post '/documents',       require './add-document'
-app.delete '/documents/:id', require './delete-document'
-app.get '/tags',             require './list-tags'
-app.post '/tags',            require './add-tag'
-app.delete '/tags/:id',      require './delete-tag'
+app.get '/documents',        require './routes/list-documents'
+app.post '/documents',       require './routes/add-document'
+app.delete '/documents/:id', require './routes/delete-document'
+app.get '/tags',             require './routes/list-tags'
+app.post '/tags',            require './routes/add-tag'
+app.delete '/tags/:id',      require './routes/delete-tag'
 
 app.use express.static __dirname
 server.listen yargs.argv.port || 8000
