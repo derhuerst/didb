@@ -7,15 +7,13 @@ common = require './common'
 js = "
 <script>
 'use strict';
-let buttons = document.querySelectorAll('#delete-tags .tag-delete');
-for (let button of buttons) {
-	button.addEventListener('click', function () {
-		deleteTag(button.getAttribute('data-id'), function (err) {
-			if (err) button.innerHTML = '☹';
-			else button.innerHTML = '✓';
-		})
+Array.from(document.querySelectorAll('#delete-tags .tag-delete'))
+.forEach((button) => button.addEventListener('click', function () {
+	deleteTag(button.getAttribute('data-id'), function (err) {
+		if (err) button.innerHTML = '☹';
+		else button.innerHTML = '✓';
 	})
-}
+}));
 </script>"
 
 

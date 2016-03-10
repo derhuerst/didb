@@ -4,6 +4,20 @@ common = require './common'
 
 
 
+js = "
+<script>
+'use strict';
+Array.from(document.querySelectorAll('#delete-documents .document-delete'))
+.forEach((button) => button.addEventListener('click', function () {
+	deleteTag(button.getAttribute('data-id'), function (err) {
+		if (err) button.innerHTML = '☹';
+		else button.innerHTML = '✓';
+	})
+}));
+</script>"
+
+
+
 listOfDocs = (docs) ->
 	return '<p>Keine Dokumente.</p>' if docs.length is 0
 	docs
@@ -37,4 +51,4 @@ module.exports = (req, res) -> common.readDocs (err, docs) ->
 	<ul>
 		#{listOfDocs docs}
 	</ul>
-</div>" + common.footer
+</div>" + js + common.footer
