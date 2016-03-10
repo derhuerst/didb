@@ -9,7 +9,10 @@ js = "
 'use strict';
 Array.from(document.querySelectorAll('#delete-documents .document-delete'))
 .forEach((button) => button.addEventListener('click', function () {
-	deleteTag(button.getAttribute('data-id'), function (err) {
+	if (!button.waitingForConfirm) {
+		button.innerHTML = '?';
+		button.waitingForConfirm = true;
+	} else deleteDoc(button.getAttribute('data-id'), function (err) {
 		if (err) button.innerHTML = '☹';
 		else button.innerHTML = '✓';
 	})
