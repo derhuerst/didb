@@ -1,5 +1,6 @@
 fs =   require 'fs'
 path = require 'path'
+escape = require 'slugg'
 
 
 
@@ -39,6 +40,17 @@ module.exports =
 
 	writeDocs: (d, cb) -> @writeJSON '../data/documents.json', d, cb
 	writeTags: (d, cb) -> @writeJSON '../data/tags.json', d, cb
+
+	parseTags: (allTags, s) ->
+		s.split(',')
+		.map (tag) -> escape tag.trim()
+		.filter (tag) -> tag.length > 0
+	stringifyTags: (allTags, tags) ->
+		tags
+		.map (id) -> allTags.find (tag) -> tag.id is id
+		.filter (tag) -> tag isnt undefined
+		.map (tag) -> tag.title
+		.join ', '
 
 
 

@@ -1,8 +1,5 @@
 #!/usr/bin/env coffee
 
-fs =     require 'fs'
-escape = require 'slugg'
-
 common = require './common'
 
 
@@ -16,10 +13,7 @@ addDocument = (doc, cb) ->
 
 module.exports = (req, res) ->
 	document = req.body
-	document.tags = document.tags
-		.split ','
-		.map (tag) -> escape tag.trim()
-		.filter (tag) -> tag.length > 0
+	document.tags = common.parseTags tags, document.tags
 	document.id = escape document.title
 	addDocument document, (err) ->
 		return common.sendError res, err if err

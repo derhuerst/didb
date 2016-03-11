@@ -26,11 +26,11 @@ server = https.createServer {
 	key:  fs.readFileSync './.self-signed.key'
 }, app
 
-app.get '/documents',        require './routes/list-documents'
-app.post '/documents',       require './routes/add-document'
+app.get '/documents',        require './routes/documents'
+app.post '/documents',       require './routes/create-document'
 app.delete '/documents/:id', require './routes/delete-document'
-app.get '/tags',             require './routes/list-tags'
-app.post '/tags',            require './routes/add-tag'
+app.get '/tags',             require './routes/tags'
+app.post '/tags',            require './routes/create-tag'
 app.delete '/tags/:id',      require './routes/delete-tag'
 
 app.use express.static __dirname

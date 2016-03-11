@@ -1,8 +1,5 @@
 #!/usr/bin/env coffee
 
-fs =     require 'fs'
-escape = require 'slugg'
-
 common = require './common'
 
 
