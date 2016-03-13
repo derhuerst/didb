@@ -28,6 +28,7 @@ server = https.createServer {
 
 app.get '/documents',        require './routes/documents'
 app.post '/documents',       require './routes/create-document'
+app.get '/documents/:id',    require './routes/document'
 app.patch '/documents/:id',  require './routes/update-document'
 app.delete '/documents/:id', require './routes/delete-document'
 app.get '/tags',             require './routes/tags'

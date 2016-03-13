@@ -27,6 +27,7 @@ listOfDocs = (docs) ->
 	.map (doc) -> "
 <li class=\"document\">
 	<span>#{doc.title}</span>
+	<a class=\"button\" href=\"/documents/#{doc.id}\">✎</a>
 	<button class=\"document-delete\" data-id=\"#{doc.id}\" type=\"button\">✘</button>
 </li>"
 	.join ''
