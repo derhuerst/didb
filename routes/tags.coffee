@@ -38,6 +38,7 @@ module.exports = (req, res) -> common.readTags (err, tags) ->
 	return common.sendError res, err if err
 
 	res.end common.header + '
+<div id=\"body\">
 <div class="right-column">
 	<h2>Schlagwort hinzufügen</h2>
 	<form action="./tags" method="post">
@@ -51,4 +52,5 @@ module.exports = (req, res) -> common.readTags (err, tags) ->
 	<ul>
 		#{listOfTags tags}
 	</ul>
+</div>
 </div>" + js + common.footer

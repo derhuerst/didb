@@ -86,6 +86,8 @@ module.exports = (req, res) -> common.readDocsAndTags (err, docs, tags) ->
 		.filter (tag) -> tag.length > 0
 
 	res.end common.header + "
+<p>Im Projekt <em>Deutschkurs in der Box</em> sind wir auf mehrere wertvolle Arbeitsblätter gestoßen, die wir hier gesammelt und mit Schlagwörtern versehen haben für eine bessere Übersicht des vorhandenen verfügbaren Angebots.</p>
+<div id=\"body\">
 <nav id=\"tags\" class=\"right-column\">
 	<h2>Ausgewählte Schlagwörter</h2>
 	<ul id=\"tags-selected\">
@@ -100,4 +102,5 @@ module.exports = (req, res) -> common.readDocsAndTags (err, docs, tags) ->
 	<ul id=\"documents-list\">
 		#{listOfDocs tags, docs, selectedTags}
 	</ul>
-</main>" + common.footer
+</main>
+</div>" + common.footer

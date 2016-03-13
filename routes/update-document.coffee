@@ -16,4 +16,4 @@ module.exports = (req, res) -> common.readDocsAndTags (err, docs, tags) ->
 
 	common.writeDocs docs, (err) ->
 		return common.sendError res, err if err
-		res.end 'ok'
+		res.type('text').end 'ok'

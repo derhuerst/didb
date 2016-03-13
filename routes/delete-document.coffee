@@ -11,4 +11,4 @@ module.exports = (req, res) -> common.readDocs (err, docs) ->
 	docs = docs.filter (doc) -> doc.id isnt req.params.id
 	common.writeDocs docs, (err) ->
 		return common.sendError res, err if err
-		res.end 'ok'
+		res.type('text').end 'ok'

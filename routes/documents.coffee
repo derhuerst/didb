@@ -38,6 +38,7 @@ module.exports = (req, res) -> common.readDocs (err, docs) ->
 	return common.sendError res, err if err
 
 	res.send common.header + '
+<div id=\"body\">
 <div class="right-column">
 	<h2>Dokument hinzufügen</h2>
 	<form action="./documents" method="post">
@@ -55,4 +56,5 @@ module.exports = (req, res) -> common.readDocs (err, docs) ->
 	<ul>
 		#{listOfDocs docs}
 	</ul>
+</div>
 </div>" + js + common.footer
