@@ -23,6 +23,7 @@
 		"server":        "coffee app.coffee --port 80",
 		"start":         "forever start -c coffee ./app.coffee --port 80",
 		"stop":          "forever stop ./app.coffee",
-		"deploy":        "rsync -rav -e 'ssh -i ./.digital-ocean' --exclude '.*' --exclude 'node_modules' . root@46.101.109.127:~/didb/"
+		"deploy":        "rsync -rav --delete -e 'ssh -i ./.digital-ocean' --exclude '.*' --exclude 'node_modules' --exclude data . root@46.101.109.127:~/didb/",
+		"ssh":           "ssh -i ./digital-ocean root@46.101.109.127"
 	}
 }
