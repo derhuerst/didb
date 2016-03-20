@@ -7,6 +7,7 @@ npm-debug.log
 
 .digital-ocean
 .self-signed.key
+config.coffee
 
 documents/
 documents.json
