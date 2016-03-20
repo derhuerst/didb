@@ -1,5 +1,7 @@
 #!/usr/bin/env coffee
 
+escape = require 'slugg'
+
 common = require './common'
 
 
