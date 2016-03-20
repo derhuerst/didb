@@ -43,7 +43,8 @@ module.exports = (req, res) -> common.readDocs (err, docs) ->
 	<h2>Dokument hinzufügen</h2>
 	<form action="./documents" method="post">
 		<input type="text" name="title" value="" placeholder="Titel"/>
-		<input type="text" name="author" value="" placeholder="Autor_in"/>
+		<input type="text" name="author-name" value="" placeholder="Name d. Autor_in"/>
+		<input type="text" name="author-link" value="" placeholder="Link z. Autor_in"/>
 		<textarea type="text" name="description" value="" placeholder="Beschreibung"></textarea>
 		<input type="text" name="tags" value="" placeholder="Tags, getrennt mit Komma"/>
 		<input type="text" name="file" value="" placeholder="Dateiname des Dokuments"/>

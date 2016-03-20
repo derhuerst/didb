@@ -11,7 +11,7 @@ module.exports = (req, res) -> common.readDocsAndTags (err, docs, tags) ->
 
 	data = req.body
 	doc.tags = common.parseTags tags, data.tags if data.hasOwnProperty 'tags'
-	for prop in ['title', 'author', 'description', 'file', 'picture']
+	for prop in ['title', 'author-name', 'author-link', 'description', 'file', 'picture']
 		doc[prop] = data[prop] if data.hasOwnProperty prop
 
 	common.writeDocs docs, (err) ->

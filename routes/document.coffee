@@ -32,7 +32,8 @@ module.exports = (req, res) -> common.readDocsAndTags (err, docs, tags) ->
 <form id=\"update\" data-id=\"#{doc.id}\" action=\"/documents/#{doc.id}\" method=\"patch\">
 	<input type=\"hidden\" name=\"id\" value=\"#{doc.id}\"/>
 	<input type=\"text\" name=\"title\" value=\"#{doc.title}\" placeholder=\"Titel\"/>
-	<input type=\"text\" name=\"author\" value=\"#{doc.author}\" placeholder=\"Autor_in\"/>
+	<input type=\"text\" name=\"author-name\" value=\"#{doc['author-name']}\" placeholder=\"Name d. Autor_in\"/>
+	<input type=\"text\" name=\"author-link\" value=\"#{doc['author-link']}\" placeholder=\"Link z. Autor_in\"/>
 	<textarea type=\"text\" name=\"description\" placeholder=\"Beschreibung\">#{doc.description}</textarea>
 	<input type=\"text\" name=\"tags\" value=\"#{readableTags}\" placeholder=\"Tags, getrennt mit Komma\"/>
 	<input type=\"text\" name=\"file\" value=\"#{doc.file}\" placeholder=\"Dateiname des Dokuments\"/>

@@ -64,17 +64,24 @@ listOfDocs = (tags, docs, selectedTags) ->
 			return tag
 
 	docs
-	.map (doc) -> "
+	.map (doc) ->
+		html = "
 <li class=\"document\">
 	<h2>#{doc.title}</h2>
-	<span class=\"document-author\">Autor: #{doc.author}</span>
+	<span class=\"document-author\">Autor:
+	"
+		if doc['author-link']?
+			html += " <a href=\"#{doc['author-link']}\">#{doc['author-name']}</a>"
+		else html += ' ' + doc['author-name']
+		html += "</span>
 	<img class=\"document-picture\" src=\"documents/#{doc.picture}\"/>
 	<p class=\"document-description\">#{doc.description}</p>
 	<ul class=\"document-tags\">
 		#{listOfTags tagsOfDocument doc}
 	</ul>
-	<a class=\"button document-download\" href=\"./documents/#{doc.file}\">Download</a>
+	<a class=\"button document-download\" href=\"./documents/#{doc.file}\">Öffnen</a>
 </li>"
+		html
 	.join ''
 
 
