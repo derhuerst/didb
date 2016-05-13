@@ -15,7 +15,10 @@ addTag = (tag, cb) ->
 
 module.exports = (req, res) ->
 	tag = req.body
-	Object.assign tag, id: escape tag.title
+	id = escape tag.title
+	if id.length is 0
+		return common.sendError res, new Error 'Tag can\'t be empty.'
+	Object.assign tag, {id}
 	addTag tag, (err) ->
 		return common.sendError res, err if err
 		res.redirect './tags'
