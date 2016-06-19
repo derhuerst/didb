@@ -5,7 +5,7 @@ Thumbs.db
 node_modules
 npm-debug.log
 
-.digital-ocean
+.scaleway
 .self-signed.key
 config.coffee
 

@@ -23,8 +23,7 @@
 		"server":        "coffee app.coffee --port 80",
 		"start":         "forever start -c coffee ./app.coffee --port 80",
 		"stop":          "forever stop ./app.coffee",
-		"deploy":        "rsync -rav --delete -e 'ssh -i ./.digital-ocean' --exclude '.*' --exclude 'node_modules' --exclude data --exclude documents . root@46.101.109.127:~/didb/",
-		"sync":          "rsync -rav --delete -e 'ssh -i ./.digital-ocean' root@46.101.109.127:~/didb/data/* ./data",
-		"ssh":           "ssh -i ./digital-ocean root@46.101.109.127"
+		"deploy":        "./deploy",
+		"ssh":           "ssh -i ./.scaleway root@didb-2.jannisr.de"
 	}
 }

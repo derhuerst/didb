@@ -1,0 +1,16 @@
+#!/bin/bash
+
+rsync -rav --delete -e 'ssh -i ./.scaleway' \
+	--exclude '.*' \
+	--exclude node_modules \
+	--exclude data \
+	--exclude documents \
+	. root@didb-2.jannisr.de:~/didb/
+
+ssh -i ./.scaleway root@didb-2.jannisr.de "\
+cd ~/didb
+npm i
+forever stop didb-frontend
+forever start -a --uid didb-frontend -c coffee ./app.coffee --port 80
+forever stop didb-backend
+forever start -a --uid didb-backend -c coffee ./backend.coffee --port 8000"
