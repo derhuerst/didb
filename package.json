@@ -10,6 +10,7 @@
 	"repository":        "git://github.com/derhuerst/didb.git",
 	"license":           "GPL",
 	"dependencies": {
+		"config": "^1.21",
 		"coffee-script":  "^1.10",
 		"basic-auth":     "^1.0.3",
 		"express":        "^4.13.4",
@@ -19,9 +20,8 @@
 		"forever":        "^0.15.1"
 	},
 	"scripts": {
-		"dev-server":    "coffee app.coffee --port 10000",
-		"server":        "coffee app.coffee --port 80",
-		"start":         "forever start -c coffee ./app.coffee --port 80",
+		"server":        "coffee app.coffee",
+		"start":         "forever start -c coffee ./app.coffee",
 		"stop":          "forever stop ./app.coffee",
 		"deploy":        "./deploy",
 		"ssh":           "ssh -i ./.scaleway root@didb-2.jannisr.de"

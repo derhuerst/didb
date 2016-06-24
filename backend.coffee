@@ -7,7 +7,7 @@ express =     require 'express'
 busboy =      require 'express-busboy'
 yargs =       require 'yargs'
 
-config =      require './config'
+config =      require 'config'
 
 
 
