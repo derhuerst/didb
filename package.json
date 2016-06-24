@@ -20,10 +20,15 @@
 		"forever":        "^0.15.1"
 	},
 	"scripts": {
-		"server":        "coffee app.coffee",
-		"start":         "forever start -c coffee ./app.coffee",
-		"stop":          "forever stop ./app.coffee",
-		"deploy":        "./deploy",
-		"ssh":           "ssh -i ./.scaleway root@didb-2.jannisr.de"
+		"frontend": "coffee app.coffee",
+		"backend": "coffee backend.coffee",
+		"start-frontend": "forever start -a --uid didb-frontend -c coffee ./app.coffee",
+		"start-backend": "forever start -a --uid didb-backend -c coffee ./backend.coffee",
+		"start": "npm run start-frontend; npm run start-backend",
+		"stop-frontend": "forever stop didb-frontend",
+		"stop-backend": "forever stop didb-backend",
+		"stop": "npm run stop-frontend; npm run stop-backend",
+		"deploy": "./deploy",
+		"ssh": "ssh -i ./.scaleway root@didb.jannisr.de"
 	}
 }
