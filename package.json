@@ -15,7 +15,7 @@
 		"basic-auth":     "^1.0.3",
 		"express":        "^4.13.4",
 		"express-force-ssl": "^0.3.2",
-		"express-busboy": "^2.4.5",
+		"express-busboy": "^4",
 		"slugg":          "^1",
 		"yargs":          "^4.2.0",
 		"forever":        "^0.15.1"
