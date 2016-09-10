@@ -3,7 +3,6 @@
 basicAuth =   require 'basic-auth'
 express =     require 'express'
 busboy =      require 'express-busboy'
-yargs =       require 'yargs'
 cfg = require 'config'
 https = require 'https'
 

@@ -17,7 +17,6 @@
 		"express-force-ssl": "^0.3.2",
 		"express-busboy": "^4",
 		"slugg":          "^1",
-		"yargs":          "^4.2.0",
 		"forever":        "^0.15.1"
 	},
 	"scripts": {

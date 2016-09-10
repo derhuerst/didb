@@ -2,7 +2,6 @@
 
 express =     require 'express'
 forceSSL = require('express-force-ssl')
-yargs =       require 'yargs'
 cfg = require 'config'
 https = require 'https'
 http = require 'http'

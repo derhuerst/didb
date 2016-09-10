@@ -1,4 +1,4 @@
-# Deutschkurs in der Box
+# Deutschkurs in der Box 📚
 
 [![dependency status](https://img.shields.io/david/derhuerst/didb.svg)](https://david-dm.org/derhuerst/didb)
 [![dev dependency status](https://img.shields.io/david/dev/derhuerst/didb.svg)](https://david-dm.org/derhuerst/didb#info=devDependencies)
