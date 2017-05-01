@@ -1,26 +1,18 @@
 #!/usr/bin/env coffee
 
 express =     require 'express'
-forceSSL = require('express-force-ssl')
-cfg = require 'config'
-https = require 'https'
 http = require 'http'
 
-fs = require 'fs'
-ssl =
-	key:  fs.readFileSync cfg.key
-	cert: fs.readFileSync cfg.cert
-	ca:   fs.readFileSync cfg.ca
-
-
+port = process.env.PORT || 3000
+hostname = process.env.HOSTNAME || ''
 
 app = express()
-app.set 'forceSSLOptions', httpsPort: cfg.ports.https
-app.use forceSSL
 app.get '/', require './routes/frontend'
 app.use express.static __dirname
 
-secure = https.createServer(ssl, app)
-secure.listen cfg.ports.https
-insecure = http.createServer(app)
-insecure.listen cfg.ports.http
+http.createServer(app)
+.listen port, (err) ->
+	if err
+		console.error err
+		process.exit 1
+	console.info "Listening on #{hostname}:#{port}."
